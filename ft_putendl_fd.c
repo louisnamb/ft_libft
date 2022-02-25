@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:05:46 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/07 17:05:50 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:46:52 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,8 +14,8 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
-        	return ;
-    	while (*s)
-        	write(fd, &*s++, 1);
-    	write(1, "\n", 1);
+		return ;
+	while (*s)
+		write(fd, &*s++, 1);
+	write(1, "\n", 1);
 }

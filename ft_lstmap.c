@@ -6,18 +6,18 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:08:12 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/07 17:08:21 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:30:49 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list  *new_list;
-	t_list  *new_elem;
+	t_list	*new_list;
+	t_list	*new_elem;
 
 	if (!lst || !f || !del)
-		return (NULL);	
+		return (NULL);
 	if (!(new_list = ft_lstnew((f)(lst->content))))
 	{
 		ft_lstclear(&new_elem, del);
@@ -31,7 +31,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		{
 			ft_lstclear(&lst, del);
 			ft_lstclear(&new_elem, del);
-			break;	
+			break ;
 		}
 		lst = lst->next;
 		ft_lstadd_back(&new_elem, new_list);
