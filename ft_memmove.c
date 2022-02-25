@@ -6,28 +6,28 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:26:01 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/01/18 14:26:06 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:43:36 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void            *ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
 
-    	i = 0;
-    	if (!dst && !src)
-        	return (0);
-    	else if (src < dst) //used when data is overlapping like moving an array within itself
-    	{
-        	while (len-- > 0)
-            		((unsigned char *)dst)[len - 1] = ((unsigned char *)src)[len - 1];
-    	}
-    	else if (src >= dst)
-    	{
-        	while (i++ < len) //means dest < src so its just like ft_memcpy.c
-            		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-    	}
+	i = 0;
+	if (!dst && !src)
+		return (0);
+	else if (src < dst)
+	{
+		while (len-- > 0)
+			((unsigned char *)dst)[len - 1] = ((unsigned char *)src)[len - 1];
+	}
+	else if (src >= dst)
+	{
+		while (i++ < len)
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+	}
 	return (dst);
 }
 /*

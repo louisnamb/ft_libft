@@ -6,18 +6,18 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:28:28 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/07 17:28:31 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:23:26 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    	if (!lst || !new)
-        	return ;
-    	new->next = *lst;
-    	*lst = new;
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 /*
 Adds the element ’new’ at the beginning of the

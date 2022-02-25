@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:27:52 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/07 17:27:58 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:26:37 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	del(lst->content);
-    	free(lst);
+	free(lst);
 	lst = NULL;
 }
