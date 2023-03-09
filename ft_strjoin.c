@@ -6,16 +6,17 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 10:18:07 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/01/25 10:18:08 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:53:00 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*result;
+
 	i = 0;
 	j = 0;
 	if (!s1 || !s2)

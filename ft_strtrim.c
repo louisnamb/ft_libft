@@ -6,45 +6,52 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 10:49:08 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/01/25 10:49:11 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:32:17 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_real_trim(char const *str, char const *find, size_t iterator, int pos)
+size_t	ft_setchkr(char c, char const *str)
 {
-	char	*trim;
-
-	if (!(trim = (char *)malloc(ft_strlen(str) + 1)))
-		return (0);
-	while (str[iterator])
+	while (*str)
 	{
-		if (iterator >= 0 && iterator <= ft_strlen(find))
-			iterator = ft_strlen(find);
-		else if (iterator >= (ft_strlen(str) - ft_strlen(find)))
-			iterator += ft_strlen(str) - ft_strlen(find);
-		trim[pos++] = str[iterator++];
+		if (c == *str)
+			return (1);
+		str++;
 	}
-	trim[pos] = '\0';
-	return  (trim);
+	return (0);
 }
-char	*ft_strtrim(char const *s1, char const *set)
+
+char	*ft_strtrim(char const *str, char const *find)
 {
-	int	p;
-	int	j;
-	
-	p = 0;
-	j = 0;
-	if (!s1)
-		return (0);
-	return (ft_real_trim(s1, set, p, j));
+	size_t	start;
+	size_t	end;
+	char	*substring;
+	size_t	i;
+
+	start = 0;
+	end = ft_strlen(str);
+	while (str[start] && ft_setchkr(str[start], find))
+		start++;
+	while (end > start && ft_setchkr(str[end - 1], find))
+		end--;
+	substring = malloc(sizeof(char *) * (end - start + 1));
+	if (!substring)
+		return (NULL);
+	i = 0;
+	while (i + start < end)
+	{
+		substring[i] = str[start + i];
+		i++;
+	}
+	substring[i] = '\0';
+	return (substring);
 }
 /*
 int main()
 {
     char *p1 = "suyterfwty james my name is suyterfwty";
     char *p2 = "suyterfwty";
-  //  printf("real:%d\n", trim(p1, p2));
     printf("ft:%s", ft_strtrim(p1, p2));
     return  (0);
 }*/

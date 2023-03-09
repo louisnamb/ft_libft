@@ -6,12 +6,12 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:19:12 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/07 17:24:43 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:44:35 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void            *ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*p;
 	unsigned int	i;

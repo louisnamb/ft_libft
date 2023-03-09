@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:27:14 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/07 17:27:18 by lnambaji         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:27:36 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	if (!lst || !f)
 		return ;
 	while (lst != NULL)
-   	{
+	{
 		(*f)(lst->content);
 		lst = lst->next;
-   	}
+	}
 }
