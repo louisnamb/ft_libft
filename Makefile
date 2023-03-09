@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhabaguh <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/01 15:23:32 by jhabaguh          #+#    #+#              #
-#    Updated: 2021/10/01 15:23:47 by jhabaguh         ###   ########.fr        #
+#    Created: 2023/03/09 11:46:06 by lnambaji          #+#    #+#              #
+#    Updated: 2023/03/09 12:05:54 by lnambaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,10 +60,10 @@ OBJS = $(SRC:.c=.o)
 
 HDRS = libft.h
 
-all: $(NAME)
+all:$(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror -I $(HDRS) $(SRC) 
+	gcc -c -Wall -Werror -Wextra -I $(HDRS) $(SRC)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
