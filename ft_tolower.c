@@ -6,9 +6,10 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:14:10 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/28 16:38:05 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:31:30 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_tolower(int c)
@@ -18,9 +19,7 @@ int	ft_tolower(int c)
 	else
 		return (c);
 }
-/*
-//#include "libft.h"
-#include <stdio.h>
+/*#include <stdio.h>
 #include <ctype.h>
 int main()
 {
@@ -29,8 +28,7 @@ int main()
     while (a[i])
     {
         printf("%c", ft_tolower(a[i]));
-        printf("| %c", tolower(a[i]));
-        printf("\n");
+        printf("| %c\n", tolower(a[i]));
         i++;
     }
     return (0);
