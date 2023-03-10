@@ -6,9 +6,10 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:29:07 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/28 17:37:44 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:59:45 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*emptyarr(int n)
@@ -79,7 +80,6 @@ char	*ft_itoa(int n)
 
 	len = 0;
 	i = 0;
-	word = NULL;
 	numbers = "0123456789";
 	word = emptyarr(n);
 	len = intvlen(n);
@@ -91,7 +91,7 @@ char	*ft_itoa(int n)
 	while (n >= 0 && len != 0)
 	{
 		word[i++] = numbers[convi2c(n) % 10];
-		n = n - powerto(len, convi2c(n));
+		n -= powerto(len, convi2c(n));
 		len--;
 	}
 	return (word);

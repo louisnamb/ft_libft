@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:26:01 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/10 13:48:19 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:46:12 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (dst);
 	if (n_src < n_dst)
 	{
-		while (len--)
+		while (len-- > 0)
 			*(n_dst + len) = *(n_src + len);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 18:22:03 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/10 13:56:59 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:11:13 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*mem_s;
-	
+	unsigned char	*mem_s;
+	unsigned char	find;
+
 	if (s == NULL)
 		return (NULL);
-	mem_s = (const char *)s;
-	while (n)
+	mem_s = (unsigned char *)s;
+	find = (unsigned char)c;
+	while (n--)
 	{
-		if (*mem_s == c)
-			return ((void *)mem_s);
+		if (*mem_s == find)
+			return (mem_s);
 		mem_s++;
-		n--;
 	}
 	return (NULL);
 }
