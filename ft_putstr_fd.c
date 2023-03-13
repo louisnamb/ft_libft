@@ -9,11 +9,12 @@
 /*   Updated: 2022/02/25 15:47:43 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
+	if (!s || !fd)
 		return ;
 	while (*s)
 		write(fd, &*s++, 1);

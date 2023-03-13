@@ -9,23 +9,28 @@
 /*   Updated: 2022/02/25 17:34:40 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-/*
-static int	num_splits(char const *s, char c)//tells us how many arrays we need
-{	//works because it counts the number of times c appears
-	size_t	i;//and adds that by one to include the extra array
+#include "libft.h"
+#include <stdio.h>
+
+size_t	ft_strlen(const char *s)
+{
+	size_t i;
 
 	i = 0;
-	while (*s)
-	{
-		if (*s == c)
-			i++;
-		s++;
-	}
-	return (i + 1);
-}*/
-static int	num_splits(const char *str, char c)
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+int spacechk(char c)
+{
+	if (c == '\t' || c == '\n'  || c == '\v' || c ==  '\f' || c ==  '\r' || c == ' ')
+		return (1);
+	return (0);
+}
+
+int	num_splits(const char *str, char c)
 {
 	size_t	i;
 	size_t	trigger;
@@ -46,8 +51,8 @@ static int	num_splits(const char *str, char c)
 	return (i);
 }
 
-static char	*cpyup2del(char const *s, int beg, int fin)
-{									
+char	*cpyup2del(char const *s, int beg, int fin)
+{
 	size_t	i;
 	char	*str;
 
@@ -71,29 +76,40 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	i = 0;
 	boolean1 = -1;
-	split = malloc(sizeof(char *) * (num_splits(s, c)) + 1);
+	split = malloc(sizeof(char *) * (num_splits(s, c) + 1));
 	if (!s || !split)
 		return (NULL);
-	while (i++ <= ft_strlen(s))
+	while (i <= ft_strlen(s))
 	{
-		if (s[i] != c && boolean1 < 0)
+		if ((s[i] != c || !spacechk(s[i]))&& boolean1 < 0)
 			boolean1 = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && boolean1 >= 0)
+		else if ((s[i] == c || spacechk(s[i]) || i == ft_strlen(s)) && boolean1 >= 0)
 		{
-			split[j++] = cpyup2del(s, boolean1, i);
+			split[j] = cpyup2del(s, boolean1, i);
 			boolean1 = -1;
+			j++;
 		}
+		i++;
 	}
-	split[j] = 0;
+	split[j] = NULL;
 	return (split);
-}
-/*
+}/*
+
 int main()
 {
-	char *sp = "abcidefghijk";
-	char d = 'i';
-	printf("real: %s\n", ft_split(sp, d)[0]);
-	printf("real: %s\n", ft_split(sp, d)[1]);
-	printf("real: %s\n", ft_split(sp, d)[2]);
+	char	*string = "      split       this for   me  !       ";
+	char d = ' ';
+	char **str = ft_split(string, ' ');
+	size_t i = 0;
+	while (str[i])
+	{
+		printf("real: %s\n", str[i]);
+		i++;
+	}
+	while (str[i])
+	{
+		free(str[i]);
+		i--;
+	}
 	return (0);
 }*/

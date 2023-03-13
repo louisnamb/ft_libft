@@ -9,11 +9,13 @@
 /*   Updated: 2022/02/28 18:33:15 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
 #include <unistd.h>
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if (!s || fd < 0)
+		return ;
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }
