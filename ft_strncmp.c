@@ -26,16 +26,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (s1[count] - s2[count]);
 }
-/*
+
 
 #include <stdio.h>
 #include <string.h>
 int main()
 {
 	int d = 5;
-	char *a = "nambajimana";
-	char *b = "fgffgdhfaa";
-	printf("real: %d\n", strncmp(a, b, d));
-	printf("ft: %d\n", ft_strncmp(a, b, d));
+	printf("real: %d\n", strncmp("test", "testss", 7));
+	printf("ft: %d\n", ft_strncmp("test", "testss", 7));
 	return (0);
-}*/
+}

@@ -15,7 +15,7 @@
 char	*ft_strchr(const char *s, int c)
 {
 	const char	*str;
-	
+
 	str = s;
 	if (str)
 	{
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string.h>
 
 int main() {
@@ -38,4 +38,4 @@ int main() {
 	int c = 'r';
 	printf("ft_strchr: %s strchr: %s\n", ft_strchr(str, c), strchr(str, c));	
 	return (0);
-}
+}*/

@@ -6,9 +6,11 @@
 #    By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 11:46:06 by lnambaji          #+#    #+#              #
-#    Updated: 2023/03/09 12:05:54 by lnambaji         ###   ########.fr        #
+#    Updated: 2023/03/14 12:42:16 by lnambaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.PHONY: all clean fclean re
 
 NAME = libft.a
 

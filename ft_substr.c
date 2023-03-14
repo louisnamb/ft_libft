@@ -9,13 +9,14 @@
 /*   Updated: 2022/02/28 17:48:29 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substring;
-	int		i;
-	int		j;
+	char		*substring;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	j = 0;

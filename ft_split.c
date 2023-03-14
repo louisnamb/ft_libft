@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 12:13:06 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/25 17:34:40 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:01:50 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -23,9 +23,11 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int spacechk(char c)
+int	chk(char c)
 {
-	if (c == '\t' || c == '\n'  || c == '\v' || c ==  '\f' || c ==  '\r' || c == ' ')
+	if (c == '\t' || c == '\n' || c == '\v')
+		return (1);
+	else if (c == '\f' || c == '\r' || c == ' ')
 		return (1);
 	return (0);
 }
@@ -70,30 +72,31 @@ char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	size_t	j;
-	int		boolean1;
+	int		boo;
 	size_t	i;
 
 	j = 0;
 	i = 0;
-	boolean1 = -1;
+	boo = -1;
 	split = malloc(sizeof(char *) * (num_splits(s, c) + 1));
 	if (!s || !split)
 		return (NULL);
 	while (i <= ft_strlen(s))
 	{
-		if ((s[i] != c || !spacechk(s[i]))&& boolean1 < 0)
-			boolean1 = i;
-		else if ((s[i] == c || spacechk(s[i]) || i == ft_strlen(s)) && boolean1 >= 0)
+		if ((s[i] != c || !chk(s[i])) && boo < 0)
+			boo = i;
+		else if ((s[i] == c || chk(s[i]) || i == ft_strlen(s)) && boo >= 0)
 		{
-			split[j] = cpyup2del(s, boolean1, i);
-			boolean1 = -1;
+			split[j] = cpyup2del(s, boo, i);
+			boo = -1;
 			j++;
 		}
 		i++;
 	}
 	split[j] = NULL;
 	return (split);
-}/*
+}
+/*
 
 int main()
 {

@@ -10,13 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*func_lst;
-	t_list	*new_lst;
 	t_list	*new_node;
 
 	if (!lst || !del || !f)
@@ -41,6 +39,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (new_node);
 }
 /*
+#include <stdlib.h>
+
 void	del(void *content)
 {
 	free(content);
@@ -115,7 +115,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 		*lst = new;
 }
-/*
+
 int	main(void)
 {
 	t_list	*list;

@@ -9,45 +9,44 @@
 /*   Updated: 2023/03/10 15:07:08 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
+}
 
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 
-	len = ft_strlen(s);
-	while (len)
+	len = 0;
+	while (len < (ft_strlen(s) + 1))
 	{
 		if (*(s + len) == c)
 			return ((char *)s + len);
-		len--;
+		len++;
 	}
-	return (0);
-}
-/*
-char	*example(const char *s, int c)
-{
-	int i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
-	{
-		if (s[i] == c)
-			return ((char*)&s[i]);
-		i--;
-	}
-	return (0);
+	return ((char *)s + len);
 }
 
 #include <string.h>
 #include <stdio.h>
 int main () {
 
-   const char str[] = "nambajimana";
-   const char ch = 'a';
+   const char str[] = "bonjour";
+   const char ch = '\0';
 
    printf("real: %c %s\n", ch, strrchr(str, ch));
    printf("me: %c %s\n", ch, ft_strrchr(str, ch));
-   printf("them: %c %s\n", ch, example(str, ch));
+  // printf("them: %c %s\n", ch, example(str, ch));
    return(0);
-}*/
+}
