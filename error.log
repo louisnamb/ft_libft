@@ -1,0 +1,261 @@
+Errors in strrchr: /Users/lnambaji/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strrchr
+Test 6:
+    if (!(str = ft_strrchr(str2, '\0')))
+        ft_print_result("NULL");
+    else
+    {
+        ft_print_result(str);
+        if (str != str2 + 7)
+            ft_print_result("\nReturn value is false");
+    }
+Expected (cat -e test06.output):
+
+Your result (cat -e user_output_test06):
+NULL
+Test 7:
+    char    str3[] = "";
+    if (!(str = ft_strrchr(str3, '\0')))
+        ft_print_result("NULL");
+    else
+    {
+        ft_print_result(str);
+        if (str != str3)
+            ft_print_result("\nReturn value is false");
+    }
+Expected (cat -e test07.output):
+
+Your result (cat -e user_output_test07):
+NULL
+Errors in substr: /Users/lnambaji/francinette/temp/libft/war-machine/tests/Part2_functions/ft_substr
+Test 1:
+    if (!(strsub = ft_substr(str, 0, 10)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strsub);
+    if (str == strsub)
+        ft_print_result("\nA new string was not returned");
+Expected (cat -e test01.output):
+lorem ipsu
+Your result (cat -e user_output_test01):
+
+Test 2:
+    if (!(strsub = ft_substr(str, 7, 10)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strsub);
+    if (str == strsub)
+        ft_print_result("\nA new string was not returned");
+Expected (cat -e test02.output):
+psum dolor
+Your result (cat -e user_output_test02):
+
+Test 3:
+    if (!(strsub = ft_substr(str, 7, 0)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strsub);
+    if (str == strsub)
+        ft_print_result("\nA new string was not returned");
+Expected (cat -e test03.output):
+
+Your result (cat -e user_output_test03):
+
+Test 4:
+    if (!(strsub = ft_substr(str, 0, 0)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strsub);
+    if (str == strsub)
+        ft_print_result("\nA new string was not returned");
+Expected (cat -e test04.output):
+
+Your result (cat -e user_output_test04):
+
+Test 5:
+    char *bullshit;
+    if (!(strsub = ft_substr(str, 400, 20)))
+        ft_print_result("NULL");
+    else
+    {
+        bullshit = (char *)&strsub[30];
+        bullshit = "FULL BULLSHIT";
+        if (strsub)
+            ft_print_result(strsub);
+        else
+            ft_print_result("rip");
+    }
+    if (str == strsub)
+        ft_print_result("\nA new string was not returned");
+    (void)bullshit;
+Expected (cat -e test05.output):
+
+Your result (cat -e user_output_test05):
+
+Errors in split: /Users/lnambaji/francinette/temp/libft/war-machine/tests/Part2_functions/ft_split
+Test 4:
+    if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+Expected (cat -e test04.output):
+lorem $
+psum dolor s$
+t amet, consectetur ad$
+p$
+sc$
+ng el$
+t. Sed non r$
+sus. Suspend$
+sse lectus tortor, d$
+gn$
+ss$
+m s$
+t amet, ad$
+p$
+sc$
+ng nec, ultr$
+c$
+es sed, dolor. Cras elementum ultr$
+c$
+es d$
+am. Maecenas l$
+gula massa, var$
+us a, semper congue, eu$
+smod non, m$
+.$
+
+Your result (cat -e user_output_test04):
+lorem$
+ipsum$
+dolor$
+s$
+t$
+amet,$
+consectetur$
+ad$
+p$
+sc$
+ng$
+el$
+t.$
+Sed$
+non$
+r$
+sus.$
+Suspend$
+sse$
+lectus$
+tortor,$
+d$
+gn$
+ss$
+m$
+s$
+
+Test 5:
+    if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'z')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+Expected (cat -e test05.output):
+lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.$
+
+Your result (cat -e user_output_test05):
+M-^P^A$
+^P^B$
+
+Errors in itoa: /Users/lnambaji/francinette/temp/libft/war-machine/tests/Part2_functions/ft_itoa
+Test 1:
+    char *res = ft_itoa(0);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test01.output):
+0
+Your result (cat -e user_output_test01):
+
+Test 2:
+    char *res = ft_itoa(9);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test02.output):
+9
+Your result (cat -e user_output_test02):
+
+Test 3:
+    char *res = ft_itoa(-9);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test03.output):
+-9
+Your result (cat -e user_output_test03):
+
+Test 4:
+    char *res = ft_itoa(10);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test04.output):
+10
+Your result (cat -e user_output_test04):
+
+Test 5:
+    char *res = ft_itoa(-10);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test05.output):
+-10
+Your result (cat -e user_output_test05):
+
+Test 6:
+    char *res = ft_itoa(8124);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test06.output):
+8124
+Your result (cat -e user_output_test06):
+
+Test 7:
+    char *res = ft_itoa(-9874);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test07.output):
+-9874
+Your result (cat -e user_output_test07):
+
+Test 8:
+    char *res = ft_itoa(543000);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test08.output):
+543000
+Your result (cat -e user_output_test08):
+
+Test 9:
+    char *res = ft_itoa(-2147483648LL);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test09.output):
+-2147483648
+Your result (cat -e user_output_test09):
+
+Test 10:
+    char *res = ft_itoa(2147483647);
+    ft_print_result(res);
+    free(res);
+Expected (cat -e test10.output):
+2147483647
+Your result (cat -e user_output_test10):
+
