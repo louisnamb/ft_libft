@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -33,44 +34,22 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-
-void	*example(void *dst, const void *src, size_t len)
+/*
+int     main(void)
 {
-	char	*n_dst;
-	char	*n_src;
-
-	n_dst = (char *)dst;
-	n_src = (char *)src;
-	if (n_dst == n_src)
-		return (dst);
-	if (n_src < n_dst)
-	{
-		while (len--)
-			*(n_dst + len) = *(n_src + len);
-	}
-	else
-	{
-		while (len--)
-			*n_dst++ = *n_src++;
-	}
-	return (dst);
-}
-
-/*int     main(void)
-{
-	char src[5] = {'a', 'b', 'c', 'd', 'e'};
-	char dst1[6] = {'0','1', '2', '3', '4', '5'};
-  	char dest2[6] = {'0','1', '2', '3', '4', '5'};
+	char	*src = "this is a good nyancat !\r\n";
+	char	dst1[0xF0];
+	char	dst2[0xF0];
 	size_t  len = 5;
 	int     off = 0;
 	printf("src: %s\n", src);
-	printf("%s\n", dst1);
-	printf("%s\n", dest2);
+	printf("dst1: %s\n", dst1);
+	printf("dst2: %s\n", dst2);
 	// Using standard memmove()
 	memmove(dst1 + off, src, len);
 	printf("dst1 (after std memmove()): %s\n", dst1);
 	// Using your implementation of memmove()
-	ft_memmove(dest2 + off, src, len);
-	printf("dst2 (after ft_memmove()):  %s\n", dest2);
+	ft_memmove(dst2 + off, src, len);
+	printf("dst2 (after ft_memmove()):  %s\n", dst2);
 	return (0);
 }*/

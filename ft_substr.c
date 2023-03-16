@@ -35,18 +35,50 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substring[i] = 0;
 	return (substring);
 }
-/*
+char	*subbstr(const char *s, unsigned int start, size_t len)
+{
+	char	*temp;
+	int		i;
+
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	if ((size_t)start > len)
+	{
+		if ((temp = malloc(1)) == NULL)
+			return (NULL);
+		temp[0] = '\0';
+		return (temp);
+	}
+	if ((temp = calloc((len + 1), sizeof(char))) == NULL)
+		return (NULL);
+	while (start < (unsigned int)len)
+	{
+		temp[i] = s[start];
+		i++;
+		start++;
+	}
+	return (temp);
+}
+ 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 int main()
 {
-    char src[] = "substr function Implementation";
- 
-    int m = 7;
-    int n = 14;
- 
-    //printf("real: %s\n", substr(src, m, n));
-    printf("ft: %s\n", ft_substr(src, m, n));
+    char	str[27] = "lorem ipsum dolor sit amet";
+	//char	src[27] = "lorem ipsum dolor sit amet";
+	/*int i = 0;
+	int m[5] = {0, 7, 7, 0, 400};
+	int n[5] = {10, 10, 0, 0, 20};
+	while (i < 6)
+	{
+		strcpy(str, "lorem ipsum dolor sit amet");
+        strcpy(src, "lorem ipsum dolor sit amet");
+		printf("%s\t|| %s\n", subbstr(src, m[i], n[i]), ft_substr(str, m[i], n[i]));
+		i++;
+	}*/
+	printf("%s", ft_substr(str, 7, 10));
+
     return 0;
-}*/
+}

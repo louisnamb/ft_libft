@@ -13,32 +13,32 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	count;
-
-	count = 0;
 	while (n-- && s1 && s2)
 	{
 		if (*s1 != *s2)
-			return (*s1 - *s2);
+			return ((unsigned char)*s1 - (unsigned char )*s2);
 		s1++;
 		s2++;
 	}
 	return (0);
 }
-
+/*
 #include <stdio.h>
 #include <string.h>
 int main()
 {
-	int d = 5;
 	int p;
 	int i = 0;
 	int j;
 
-	size_t numarr[4] = {7, 7, 4, 4};
-	const char s1arr[4][7] = {"test", "testss", "test", ""};
-	const char s2arr[4][7] = {"testss", "test", "tEst", "test"};
-	while (i < 4)
+	size_t numarr[11] = {5, 7, 7, 4, 4, 4, 3, 4, 0, 0, 6};
+	const char s1arr[11][11] = {"salut", "test", "testss", 
+	"test", "", "test", "abcdefghij", "abcdefgh", 
+	"zyxbcdefgh", "abcdefgh", "test\200"};
+	const char s2arr[11][11] = {"salut", "testss", 
+	"test", "tEst", "test", "", "abcdefgxyz", 
+	"abcdwxyz", "abcdwxyz", "", "test\0"};
+	while (i < 12)
 	{
 		p = strncmp(s1arr[i], s2arr[i], numarr[i]);
 		j = ft_strncmp(s1arr[i], s2arr[i], numarr[i]);
@@ -48,6 +48,9 @@ int main()
 			printf("not equal: %d != %d\n", p, j);
 		i++;		
 	}
+	printf("me: %d\nre: %d\n", ft_strncmp("test\200", "test\0", 6), 
+	strncmp("test\200", "test\0", 6));
 	
 	return (0);
 }
+*/

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -28,25 +29,26 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 
-	len = 0;
-	while (len < (ft_strlen(s) + 1))
+	len = ft_strlen(s);
+	while (len--)
 	{
-		if (*(s + len) == c)
-			return ((char *)s + len);
-		len++;
+		if (s[len] == c)
+			return ((char *)&s[len]);
 	}
-	return ((char *)s + len);
+	if (s[len] == c)
+		return ((char *)&s[len]);
+	return (0);
 }
-
+/*
 #include <string.h>
 #include <stdio.h>
 int main () {
 
    const char str[] = "bonjour";
-   const char ch = '\0';
+   const char ch = 'b';
 
-   printf("real: %c %s\n", ch, strrchr(str, ch));
+   printf("re: %c %s\n", ch, strrchr(str, ch));
    printf("me: %c %s\n", ch, ft_strrchr(str, ch));
   // printf("them: %c %s\n", ch, example(str, ch));
    return(0);
-}
+}*/

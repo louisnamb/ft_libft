@@ -25,11 +25,8 @@ size_t	ft_strlen(const char *s)
 
 int	chk(char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v')
-		return (1);
-	else if (c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
+	return (c == '\t' || c == '\n' || c == '\v' ||
+			c == '\f' || c == '\r' || c == ' ' || c == '\0');
 }
 
 int	num_splits(const char *str, char c)
@@ -96,23 +93,23 @@ char	**ft_split(char const *s, char c)
 	split[j] = NULL;
 	return (split);
 }
-/*
 
 int main()
 {
-	char	*string = "      split       this for   me  !       ";
-	char d = ' ';
-	char **str = ft_split(string, ' ');
-	size_t i = 0;
-	while (str[i])
+	char **str = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. 
+	Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras 
+	elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, 
+	mi.", 'z');
+	int p = 0;
+	while (str[p])
 	{
-		printf("real: %s\n", str[i]);
-		i++;
+		printf("real: %s\n", str[p]);
+		p++;
 	}
-	while (str[i])
+	while (str[p])
 	{
-		free(str[i]);
-		i--;
+		free(str[p]);
+		p--;
 	}
 	return (0);
-}*/
+}
