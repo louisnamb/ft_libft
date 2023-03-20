@@ -21,20 +21,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	j = 0;
 	substring = (char *)malloc(sizeof(char) * (len + 1));
+	if (start >= ft_strlen(s))
+		return (substring);
 	if (!substring || !s)
 		return (0);
-	while (s[i])
+	while (s[i] && i < len)
 	{	
-		if (i >= start && j < len)
-		{
-			substring[j] = s[i];
-			j++;
-		}
+		substring[i] = s[i + start];
 		i++;
 	}	
 	substring[i] = 0;
 	return (substring);
 }
+/*
 char	*subbstr(const char *s, unsigned int start, size_t len)
 {
 	char	*temp;
@@ -60,7 +59,7 @@ char	*subbstr(const char *s, unsigned int start, size_t len)
 	}
 	return (temp);
 }
- 
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -68,17 +67,17 @@ int main()
 {
     char	str[27] = "lorem ipsum dolor sit amet";
 	//char	src[27] = "lorem ipsum dolor sit amet";
-	/*int i = 0;
-	int m[5] = {0, 7, 7, 0, 400};
-	int n[5] = {10, 10, 0, 0, 20};
+	//int i = 0;
+	//int m[5] = {0, 7, 7, 0, 400};
+	//int n[5] = {10, 10, 0, 0, 20};
 	while (i < 6)
 	{
 		strcpy(str, "lorem ipsum dolor sit amet");
         strcpy(src, "lorem ipsum dolor sit amet");
 		printf("%s\t|| %s\n", subbstr(src, m[i], n[i]), ft_substr(str, m[i], n[i]));
 		i++;
-	}*/
+	}
 	printf("%s", ft_substr(str, 7, 10));
 
     return 0;
-}
+}*/

@@ -13,20 +13,11 @@
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_strlen(const char *s)
+void	freearr(char **strs, int j)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	chk(char c)
-{
-	return (c == '\t' || c == '\n' || c == '\v' ||
-			c == '\f' || c == '\r' || c == ' ' || c == '\0');
+	while (j-- > 0)
+		free(strs[j]);
+	free(strs);
 }
 
 int	num_splits(const char *str, char c)
@@ -59,48 +50,60 @@ char	*cpyup2del(char const *s, int beg, int fin)
 	str = (char *)malloc(sizeof(char) * ((fin - beg) + 1));
 	if (!str)
 		return (NULL);
-	while (beg < fin)
+	if ((size_t)beg >= ft_strlen(s))
+		return (str);
+	while (beg < fin && str[i])
 		str[i++] = s[beg++];
 	str[i] = '\0';
 	return (str);
 }
 
+int	sz_wrd(char const *str, char c, int i)
+{
+	int	sz;
+
+	sz = 0;
+	while (str[i] && str[i] != c)
+	{
+		sz++;
+		i++;
+	}
+	return (i);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
-	size_t	j;
-	int		boo;
+	int		j;
 	size_t	i;
+	int		sz_nxt_wrd;
 
-	j = 0;
+	j = -1;
 	i = 0;
-	boo = -1;
 	split = malloc(sizeof(char *) * (num_splits(s, c) + 1));
 	if (!s || !split)
 		return (NULL);
-	while (i <= ft_strlen(s))
+	while (j++ < num_splits(s, c))
 	{
-		if ((s[i] != c || !chk(s[i])) && boo < 0)
-			boo = i;
-		else if ((s[i] == c || chk(s[i]) || i == ft_strlen(s)) && boo >= 0)
+		while (s[i] == c)
+			i++;
+		sz_nxt_wrd = sz_wrd(s, c, i);
+		if (!(split[j] = cpyup2del(s, i, sz_nxt_wrd)))
 		{
-			split[j] = cpyup2del(s, boo, i);
-			boo = -1;
-			j++;
+			freearr(split, j);
+			return (NULL);
 		}
-		i++;
+		i += sz_nxt_wrd;
 	}
 	split[j] = NULL;
 	return (split);
 }
-
+/*
 int main()
 {
-	char **str = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. 
-	Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras 
-	elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, 
-	mi.", 'z');
 	int p = 0;
+	char **str = ft_split("lorem ipsum dolor sitr adipiscing mi.\0", 'z');
+	
 	while (str[p])
 	{
 		printf("real: %s\n", str[p]);
@@ -112,4 +115,4 @@ int main()
 		p--;
 	}
 	return (0);
-}
+}*/

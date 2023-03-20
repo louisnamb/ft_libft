@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	neg = 1;
 	while (!ft_isdigit(*str) && *str != '-'
-			&& *str != '+' && !ft_isalpha(*str) && *str != '\e')
+		&& *str != '+' && !ft_isalpha(*str) && *str != '\e')
 		str++;
 	if (*str == '-')
 		neg = -1;
@@ -63,7 +63,8 @@ int	example(const char *str)
 	num = 0;
 	i = 0;
 	neg = 1;
-	while (*str == '\t' || *str == '\n' || *str == '\f' || *str == '\r')
+	while (*str == '\t' || *str == '\n' || *str == '\f' 
+	|| *str == '\r')
 		str++;
 	if (str[0] == '-')
 		neg = -1;
@@ -98,7 +99,8 @@ int main()
 		if (p == j)
 			printf("correct: %d == %d\n", p, j);
 		else
-			printf("%d) Input given: %s:\n\tExpected: %d\n\tGot: %d\n", i, s1arr[i], j, p);
+			printf("%d) Input given: %s:\n\tExpected: %d\n\tGot: %d\n", 
+			i, s1arr[i], j, p);
 		i++;		
 	}
     return (0);

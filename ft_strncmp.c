@@ -9,17 +9,22 @@
 /*   Updated: 2022/02/25 16:45:10 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (n-- && s1 && s2)
+	size_t	i;
+
+	i = 0;
+	while (i < n && s1[i] && s2[i])
 	{
-		if (*s1 != *s2)
-			return ((unsigned char)*s1 - (unsigned char )*s2);
-		s1++;
-		s2++;
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
+	if (i != n)
+		return (s1[i] - s2[i]);
 	return (0);
 }
 /*
