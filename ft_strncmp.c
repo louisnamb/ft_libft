@@ -6,11 +6,23 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:37:37 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/25 16:45:10 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:11:24 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
+int	charcmp(const char s1, const char s2)
+{
+	if ((unsigned char)s1 > (unsigned char)s2)
+		return (1);
+	else if ((unsigned char)s1 == (unsigned char)s2)
+		return (0);
+	else	
+		return (-1);
+	return (0);
+}
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -20,7 +32,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (i < n && s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+			return (charcmp(s1[i], s2[i]));
 		i++;
 	}
 	if (i != n)
@@ -28,33 +40,28 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 /*
+int	ft_print_result(int n)
+{
+	if (n > 0)
+		n = 1;
+	else if (n < 0)
+		n = -1;
+	else
+		n = 0;
+	return (n);
+}
+
 #include <stdio.h>
 #include <string.h>
 int main()
 {
-	int p;
-	int i = 0;
-	int j;
-
-	size_t numarr[11] = {5, 7, 7, 4, 4, 4, 3, 4, 0, 0, 6};
-	const char s1arr[11][11] = {"salut", "test", "testss", 
-	"test", "", "test", "abcdefghij", "abcdefgh", 
-	"zyxbcdefgh", "abcdefgh", "test\200"};
-	const char s2arr[11][11] = {"salut", "testss", 
-	"test", "tEst", "test", "", "abcdefgxyz", 
-	"abcdwxyz", "abcdwxyz", "", "test\0"};
-	while (i < 12)
-	{
-		p = strncmp(s1arr[i], s2arr[i], numarr[i]);
-		j = ft_strncmp(s1arr[i], s2arr[i], numarr[i]);
-		if (p == j)
-			printf("equal %d\n", p);
-		else
-			printf("not equal: %d != %d\n", p, j);
-		i++;		
-	}
-	printf("me: %d\nre: %d\n", ft_strncmp("test\200", "test\0", 6), 
-	strncmp("test\200", "test\0", 6));
+	unsigned char str1[10] = "test\200";
+	unsigned char str2[10] = "test\0";
+	size_t n = 6;
+	if (ft_print_result(ft_strncmp((char *)str1, (char *)str2, n)) == ft_print_result(strncmp((char *)str1, (char *)str2, n)))
+		printf("correct) Expected: %d got: %d", strncmp((char *)str1, (char *)str2, n), ft_strncmp((char *)str1, (char *)str2, n));
+	else
+		printf("incorrect Expected: %d got: %d", strncmp((char *)str1, (char *)str2, n), ft_strncmp((char *)str1, (char *)str2, n));
 	
 	return (0);
 }

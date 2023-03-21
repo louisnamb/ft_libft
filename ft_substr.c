@@ -6,78 +6,110 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 10:14:25 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/28 17:48:29 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:44:08 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char		*substring;
-	size_t		i;
-	size_t		j;
+	char	*substring;
 
-	i = 0;
-	j = 0;
-	substring = (char *)malloc(sizeof(char) * (len + 1));
-	if (start >= ft_strlen(s))
-		return (substring);
-	if (!substring || !s)
+	if (!s)
 		return (0);
-	while (s[i] && i < len)
-	{	
-		substring[i] = s[i + start];
-		i++;
-	}	
-	substring[i] = 0;
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	substring = malloc(sizeof(char) * (len + 1));
+	if (!substring)
+		return (0);
+	ft_strlcpy(substring, s + start, len + 1);
 	return (substring);
 }
 /*
-char	*subbstr(const char *s, unsigned int start, size_t len)
-{
-	char	*temp;
-	int		i;
-
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	if ((size_t)start > len)
-	{
-		if ((temp = malloc(1)) == NULL)
-			return (NULL);
-		temp[0] = '\0';
-		return (temp);
-	}
-	if ((temp = calloc((len + 1), sizeof(char))) == NULL)
-		return (NULL);
-	while (start < (unsigned int)len)
-	{
-		temp[i] = s[start];
-		i++;
-		start++;
-	}
-	return (temp);
-}
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 int main()
 {
-    char	str[27] = "lorem ipsum dolor sit amet";
-	//char	src[27] = "lorem ipsum dolor sit amet";
-	//int i = 0;
-	//int m[5] = {0, 7, 7, 0, 400};
-	//int n[5] = {10, 10, 0, 0, 20};
-	while (i < 6)
+	char	str[] = "i just want this part #############";
+	char	src[] = "i just want this part #############";
+	size_t	size = 20;
+	unsigned int j = 10;
+	if (ssubstr(src, j, size) == ft_substr(str, j, size))
+		printf("%s", ssubstr(str, j, size));
+	else
+		printf("%s", ssubstr(str, j, size));
+    return 0;
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+	int		p;
+	int		i;
+
+	i = 0;
+	p = 0;
+	while (s1[i])
+		i++;
+	s2 = (char *)malloc(sizeof(char) * (i + 1));
+	if (!s2)
+		return (0);
+	while (s1[p])
 	{
-		strcpy(str, "lorem ipsum dolor sit amet");
-        strcpy(src, "lorem ipsum dolor sit amet");
-		printf("%s\t|| %s\n", subbstr(src, m[i], n[i]), ft_substr(str, m[i], n[i]));
+		s2[p] = s1[p];
+		p++;
+	}
+	s2[p] = '\0';
+	return (s2);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
 		i++;
 	}
-	printf("%s", ft_substr(str, 7, 10));
+	return (i);
+}
 
-    return 0;
-}*/
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (*src && i + 1 < size)
+	{
+		*dst++ = *src++;
+		++i;
+	}
+	if (i < size)
+		*dst = 0;
+	while (*src++)
+		++i;
+	return (i);
+}
+
+char	*ssubstr(const char *s, unsigned int start, size_t len)
+{
+	char	*ret;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		len = 0;
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	ret = malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (0);
+	ft_strlcpy(ret, s + start, len + 1);
+	return (ret);
+}
+*/

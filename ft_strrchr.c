@@ -13,42 +13,47 @@
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
+	char	*update;
 
-	len = ft_strlen(s);
-	while (len--)
+	update = 0;
+	while (*s)
 	{
-		if (s[len] == c)
-			return ((char *)&s[len]);
+		if (*s == (char)c)
+			update = (char *)s;
+		++s;
 	}
-	if (s[len] == c)
-		return ((char *)&s[len]);
-	return (0);
+	if (!c)
+		update = (char *)s;
+	return (update);
 }
 /*
 #include <string.h>
 #include <stdio.h>
 int main () {
+	char s[] = "tripouille";
+	char s2[] = "ltripouiel";
+	char s3[] = "";
+	char	*src = "abbbbbbbb";
+	if (ft_strrchr(s, 0) == strrchr(s, 0))
+		printf("correct\n");
+	else
+		printf("incorrect\n");
+	
+	if (ft_strrchr(s, 't' + 256) == strrchr(s, 't' + 256))
+		printf("correct\n");
+	else
+		printf("incorrect\n");
+	
+	if (ft_strrchr(s3, 0) == ft_strrchr(s3, 0))
+		printf("correct\n");
+	else
+		printf("incorrect\n");
 
-   const char str[] = "bonjour";
-   const char ch = 'b';
-
-   printf("re: %c %s\n", ch, strrchr(str, ch));
-   printf("me: %c %s\n", ch, ft_strrchr(str, ch));
-  // printf("them: %c %s\n", ch, example(str, ch));
-   return(0);
+	if (strrchr(src, 'a') == ft_strrchr(src, 'a'))
+		printf("correct\n");
+	else
+		printf("incorrect\n");
+	return(0);
 }*/

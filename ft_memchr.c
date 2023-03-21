@@ -14,29 +14,26 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*mem_s;
-	unsigned char	find;
-
-	if (s == NULL)
-		return (NULL);
-	mem_s = (unsigned char *)s;
-	find = (unsigned char)c;
 	while (n--)
 	{
-		if (*mem_s == find)
-			return (mem_s);
-		mem_s++;
+		if (*(unsigned char *)s == (unsigned char)c)
+			return ((void *)s);
+		++s;
 	}
-	return (NULL);
+	return (0);
 }
-/*#include <string.h>
+/*
+#include <string.h>
 #include <stdio.h>
 int main () {
 
-   const char str[] = "nambajimana";
-   const char ch = 'j';
-   size_t len = 6;
-   printf("%c %s\n", ch, memchr(str, ch, len));
-   printf("%c %s\n", ch, ft_memchr(str, ch, len));
-   return(0);
-}*/
+	char *src = "/|\x12\xff\x09\0\x42\042\0\42|\\";
+ 	int size = 12;
+
+ 	if (memchr(src, '\0', size) == ft_memchr(src, '\0', size))
+		printf("correct");
+ 	else
+	 	printf("incorrect");
+	return(0);
+}
+*/

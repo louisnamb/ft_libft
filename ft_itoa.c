@@ -19,10 +19,13 @@ char	*emptyarr(int n)
 	int			t;
 
 	str = (char *)malloc(sizeof(char) * len);
+	if (!str)
+		return (NULL);
 	len = 0;
 	t = 0;
 	if (n < 0)
 	{
+		str[0] = '-';
 		t = 1;
 		n *= -1;
 	}
@@ -30,11 +33,7 @@ char	*emptyarr(int n)
 	{
 		n /= 10;
 		len++;
-	}
-	if (!str)
-		return (NULL);
-	if (t == 1)
-		str[0] = '-';
+	}	
 	return (str);
 }
 
@@ -97,9 +96,15 @@ char	*ft_itoa(int n)
 	return (word);
 }
 /*
+#include <stdio.h>
+
 int main()
 {
     int i = 23456;
-    printf("final: %s\n", ft_itoa(i));
+	if (ft_itoa(i) == fake(i))
+		printf("correct");
+	else
+		printf("incorrect");
+	printf("%s", ft_itoa(i));
     return (0);
 }*/
