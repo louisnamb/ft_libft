@@ -12,99 +12,71 @@
 
 #include "libft.h"
 
-char	*emptyarr(int n)
+int	lenNum(long num)
 {
-	static int	len;
-	char		*str;
-	int			t;
-
-	str = (char *)malloc(sizeof(char) * len);
-	if (!str)
-		return (NULL);
-	len = 0;
-	t = 0;
-	if (n < 0)
-	{
-		str[0] = '-';
-		t = 1;
-		n *= -1;
-	}
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}	
-	return (str);
-}
-
-int	convi2c(int num)
-{
-	if (num >= 10)
-		return (convi2c(num / 10));
-	return (num);
-}
-
-int	intvlen(int n)
-{
-	int	len;
-
-	len = 0;
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-int	powerto(int n, int num)
-{
-	int	sum;
 	int	i;
 
-	i = 1;
-	sum = 1;
-	n--;
-	while (i++ <= n)
-		sum = sum * 10;
-	return (num * sum);
+	i = 0;
+	if (num < 0)
+	{
+		num = num * -1;
+		i++;
+	}
+	while (num > 0)
+	{
+		num = num / 10;
+		i++;
+	}
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*word;
-	int				i;
-	char			*numbers;
-	unsigned int	len;
+	char	*str;
+	int	len;
+	long	i;
 
-	len = 0;
-	i = 0;
-	numbers = "0123456789";
-	word = emptyarr(n);
-	len = intvlen(n);
-	if (word[0] == '-')
+	i = n;
+	len = lenNum(i);
+	str = (char *)malloc(sizeof(char) + (len + 1));
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
+	if (n == 0)
 	{
-		i++;
-		n *= -1;
+		str[0] = 48;
+		return (str);
 	}
-	while (n >= 0 && len != 0)
+	if (i < 0)
 	{
-		word[i++] = numbers[convi2c(n) % 10];
-		n -= powerto(len, convi2c(n));
+		str[0] = '-';
+		i = i * -1;
+	}
+	while (i > 0)
+	{
+		str[len] = 48 + (i % 10);
+		i = i / 10;
 		len--;
 	}
-	return (word);
+	return (str);
 }
 /*
 #include <stdio.h>
 
 int main()
 {
-    int i = 23456;
-	if (ft_itoa(i) == fake(i))
-		printf("correct");
-	else
-		printf("incorrect");
-	printf("%s", ft_itoa(i));
+	int i = 0;
+	char *p;
+	char outputs[11][12] = {"0","9", "-9", "10", "-10", "8124", "-9874", "543000", "-2147483648","2147483647"};
+	long inputs[11] = {0, 9, -9, 10, -10, 8124, -9874, 543000, 2147483648LL, 2147483647};
+	while (i < 11)
+	{
+		p = ft_itoa(inputs[i]); 
+		if (p == outputs[i])
+			printf("Correct:");
+	//	printf("%s %s\n", p, outputs[i]);
+		printf("%d: %s\n", i, ft_itoa(inputs[i]));
+		i++;
+	}
     return (0);
 }*/
