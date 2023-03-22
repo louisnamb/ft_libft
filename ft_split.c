@@ -80,7 +80,7 @@ char	**ft_split(char const *s, char c)
 
 	j = -1;
 	i = 0;
-	split = malloc(sizeof(char *) * (num_splits(s, c) + 1));
+	split = (char **)malloc(sizeof(char *) * (num_splits(s, c) + 1));
 	if (!s || !split)
 		return (NULL);
 	while (j++ < num_splits(s, c))
