@@ -6,14 +6,15 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:11:44 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/01/17 13:18:38 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:05:44 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -27,13 +28,11 @@ size_t	ft_strlen(const char *s)
 #include <string.h>
 int	main()
 {
-	char *a = argv[1];
-	char *b = argv[2];
-    printf("Length of string a = %zu \n",strlen(a));
-    printf("Length of string b = %zu \n\n",strlen(b));
-
-    printf("Length of string a = %d \n",ft_strlen(a));
-    printf("Length of string b = %d \n",ft_strlen(b));
+	char *str = "louis nambajimana";
+    if (strlen(str) == ft_strlen(str))
+		printf("Correct\n");
+	else
+		printf("Incorrect\n");
 
 	printf("%zu", 5 * sizeof(int));
 	return (0);

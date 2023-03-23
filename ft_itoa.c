@@ -17,6 +17,8 @@ int	lennum(long num)
 	int	i;
 
 	i = 0;
+	if (num == 0)
+		return (1);
 	if (num < 0)
 	{
 		num = num * -1;
@@ -38,7 +40,7 @@ char	*ft_itoa(int n)
 
 	i = n;
 	len = lennum(i);
-	str = (char *)malloc(sizeof(char) + (len));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len--] = '\0';
@@ -68,28 +70,11 @@ int main()
 	543000, 2147483648LL, 2147483647};
 	while (i < 11)
 	{
-		p = ft_itoa(inputs[i]);
-		if (p == outputs[i])
-			printf("Correct:");
-	//	printf("%s %s\n", p, outputs[i]);
-		else
-			printf("inccorect: %d: %s\n", i, ft_itoa(inputs[i]));
+		printf("%d-", strcmp(ft_itoa(inputs[i]), outputs[i]));
 		i++;
 	}
-	char *p = ft_itoa(-623);
-	printf("p: %s\n\n", p);
-	if (strcmp(ft_itoa(-623), "-623") == 0)
- 		printf("1correct\n");
-	else
-		printf("incorrect\n");
- 	if (strcmp(ft_itoa(156), "156"))
- 		printf("2correct\n");
-	else
-		printf("incorrect\n");
- 	if (strcmp("0", ft_itoa(0)))
- 		printf("3correct\n");
-	else
-		printf("incorrect\n");
+	
+	printf("%d", strcmp(ft_itoa(0), "0"));
+//	printf("p: %s\n\n", p);
     return (0);
-}
-*/
+}*/

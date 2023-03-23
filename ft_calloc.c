@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 14:07:31 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/25 15:12:33 by jhabaguh         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:12:33 by lnamabji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,11 @@ int main()
 
 	printf("Values of allocated_with_calloc: ");
 	for (size_t i = 0; i < 5; ++i) {
-		printf("%d ", allocated_with_calloc[i]);
-	}
-    	printf("\n");
-    	printf("Values of allocated_with_ft_calloc: ");
-    	for (size_t i = 0; i < 5; ++i) {
-        	printf("%d ", allocated_with_ft_calloc[i]);
-	}
+		printf("%d ", allocated_with_calloc[i]); 
+		printf("%d ", allocated_with_ft_calloc[i]);
 
 	free(allocated_with_ft_calloc);
 	free(allocated_with_calloc);
 	return (0);
-}*/
+}
+*/
