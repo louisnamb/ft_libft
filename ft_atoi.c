@@ -44,7 +44,7 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str && ft_isdigit(*str))
 	{
-		num = num * 10 + *str - 48;
+		num = (num * 10) + (*str - 48);
 		str++;
 	}
 	return (neg * num);

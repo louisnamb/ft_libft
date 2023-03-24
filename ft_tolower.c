@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:14:10 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/10 14:31:30 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:46:46 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	ft_tolower(int c)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	else
-		return (c);
+    if (c >= 'A' && c <= 'Z')
+    {
+        c += 32;       
+    }
+    return (c);
 }
 /*#include <stdio.h>
 #include <ctype.h>

@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:05:46 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/28 18:33:15 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:44:26 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	int	i;
+
+	i = 0;
 	if (!s || fd < 0)
 		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+	ft_putchar_fd('\n', fd);
 }

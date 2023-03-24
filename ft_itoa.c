@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:29:07 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/22 11:14:48 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:42:44 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_itoa(int n)
 }
 /*
 #include <stdio.h>
-int main()
+nt main()
 {
 	int i = 0;
 	char *p;
