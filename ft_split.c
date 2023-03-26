@@ -12,25 +12,87 @@
 
 #include "libft.h"
 
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+	int		p;
+
+	p = 0;
+	s2 = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
+	if (!s2)
+		return (0);
+	while (s1[p])
+	{
+		s2[p] = s1[p];
+		p++;
+	}
+	s2[p] = 0;
+	return (s2);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (*src && i + 1 < size)
+	{
+		*dst++ = *src++;
+		++i;
+	}
+	if (i < size)
+		*dst = 0;
+	while (*src++)
+		++i;
+	return (i);
+}
+
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*substring;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	substring = malloc(sizeof(char) * (len + 1));
+	if (!substring)
+		return (0);
+	ft_strlcpy(substring, s + start, len + 1);
+	return (substring);
+}
+
 int	num_splits(const char *str, char c)
 {
 	size_t	j;
-	size_t	trigger;
 	size_t	index;
 
 	index = 0;
 	j = 0;
-	trigger = 0;
-	while (str[index])
+	while (str[index] && str)
 	{
-		if (str[index] != c && !trigger)
+		if (str[index] != c)
 		{
-			trigger = 1;
 			j++;
+			while (str[index] == c && str[index])
+				index++;
 		}
-		else if (str[index] == c)
-			trigger = 0;
-		index++;
+		else
+			index++;
 	}
 	return (j);
 }
@@ -60,36 +122,37 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	char	**split;
 	int		j;
-	size_t	sz_nxt_wrd;
-	int		words;
 
-	words = num_splits(s, c);
+	if (!s)
+		return (NULL);
 	j = -1;
 	i = 0;
-	if (!s || !(split = (char **)malloc(sizeof(char *) * (words + 1))))
+	split = (char **)malloc(sizeof(char *) * (num_splits(s, c) + 1));
+	if (!split)
 		return (NULL);
-	while (j++ < words)
+	split[num_splits(s, c)] = 0;
+	while (++j < num_splits(s, c))
 	{
 		while (s[i] == c)
 			i++;
-		sz_nxt_wrd = sz_wrd(s, c, i);
-		if (!(split[j] = ft_substr(s, i, sz_nxt_wrd)))
+		split[j] = ft_substr(s, i, sz_wrd(s, c, i));
+		if (!split[j])
 		{
 			freearr(split, j);
 			return (NULL);
 		}
-		i += sz_nxt_wrd;
+		i += sz_wrd(s, c, i);
 	}
-	split[j] = 0;
 	return (split);
 }
-/*
+
 #include <stdio.h>
 
 int main()
 {
     int p = 0;
-    char **str = ft_split("split  ||this|for|me|||||!|", '|');
+	
+    char **str = ft_split("test split", ' ');
     if (str == NULL)
         return (1);
     while (str && str[p]) 
@@ -101,4 +164,3 @@ int main()
     freearr(str, p - 1);
     return (0);
 }
-*/
