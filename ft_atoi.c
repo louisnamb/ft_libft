@@ -11,83 +11,49 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
-int	ft_isalpha(int c)
+int	chckspace(int c)
 {
-	if ((c > 64 && c < 91) || (c > 96 && c < 123))
-		return (1);
-	return (0);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	return ((c >= 9 && c <= 13) || c == 32);
 }
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	num;
-	int	neg;
+	int		sign;
+	long	ret;
 
-	num = 0;
-	i = 0;
-	neg = 1;
-	while (!ft_isdigit(*str) && *str != '-'
-		&& *str != '+' && !ft_isalpha(*str) && *str != '\e')
-		str++;
-	if (*str == '-')
-		neg = -1;
+	ret = 0;
+	sign = 1;
+	while (chckspace(*str))
+		++str;
 	if (*str == '+' || *str == '-')
-		str++;
-	while (*str && ft_isdigit(*str))
+		if (*(str++) == '-')
+			sign *= -1;
+	while (ft_isdigit(*str))
 	{
-		num = (num * 10) + (*str - 48);
-		str++;
+		ret = ret * 10 + sign * (*str++ - '0');
+		if (ret > INT_MAX)
+			return (-1);
+		else if (ret < INT_MIN)
+			return (0);
 	}
-	return (neg * num);
+	return ((int)ret);
 }
 /*
-int	example(const char *str)
-{
-	int	i;
-	int	num;
-	int	neg;
-
-	num = 0;
-	i = 0;
-	neg = 1;
-	while (*str == '\t' || *str == '\n' || *str == '\f' 
-	|| *str == '\r')
-		str++;
-	if (str[0] == '-')
-		neg = -1;
-	if (str[0] == '+' || str[0] == '-')
-		i++;
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		num = num * 10 + str[i] - 48;
-		i++;
-	}
-	return (neg * num);
-}
-
-
 #include <stdio.h>
 
 int main()
 {
-	int p;
+	int p;ma
 	int i = 0;
 	int j;
-	
-	const char s1arr[21][20] = {"546:5", "-4886", "+548", "054854", 
-	"000074", "+-54", "-+48", "--47", "++47", "+47+5", "-47-5", 
-	"\e475", "\t\n\r\v\f  469 \n", "-2147483648", "2147483647", 
-	"\t\n\r\v\fd469 \n", "\n\n\n  -46\b9 \n5d6", 
-	"\n\n\n  -46\b9 \n5d6","\t\n\r\v\f  469 \n"};
+
+	const char s1arr[15][57] = {" \t\v\n\r\f123",
+	"0","-1000043",
+"+0000000000000000000000000000000000000000000000000000123",
+	"    123","--123","-+123","+-123","++123","- 123",
+	"+ 123","+\n123","1209","12/3","12;3"};
 	while (i < 22)
 	{
 		p = ft_atoi(s1arr[i]);
@@ -100,4 +66,5 @@ int main()
 		i++;		
 	}
     return (0);
-}*/
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:01:08 by lnambaji          #+#    #+#             */
-/*   Updated: 2022/02/25 17:37:37 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/27 10:35:59 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,8 +17,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
-	if (!s || !(str))
+	if (!str)
 		return (NULL);
 	while (s[i])
 	{
@@ -57,7 +59,7 @@ char	my_func(unsigned int i, char str)
 
 int main()
 {
-    char str[10] = "hello.";
+    char str[10] = NULL;
     printf("The str is %s\n", str);
     printf("The result is %s\n", ft_strmapi(str, my_func));
     printf("\n\nThem\nThe str is %s\n", str);

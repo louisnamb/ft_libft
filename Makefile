@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 NAME = libft.a
 
@@ -47,8 +47,9 @@ SRC =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c \
-		ft_lstadd_back.c \
+		ft_toupper.c
+
+BONUS =	ft_lstadd_back.c \
 		ft_lstadd_front.c \
 		ft_lstclear.c \
 		ft_lstdelone.c \
@@ -59,18 +60,22 @@ SRC =	ft_atoi.c \
 		ft_lstsize.c \
 
 OBJS = $(SRC:.c=.o)
+BONUS_OBJS = $(BONUS:.c=.o)
 
 HDRS = libft.h
 
 all:$(NAME)
 
 $(NAME):
-	gcc -c -Wall -Werror -Wextra -I $(HDRS) $(SRC)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	gcc -Wall -Werror -Wextra -I $(HDRS) -c $(SRC)
+	ar -rcs $(NAME) $(OBJS)
+
+bonus: $(NAME)
+	gcc -Wall -Wextra -Werror -I $(HDRS) -c $(BONUS)
+	ar -rcs $(NAME) $(BONUS_OBJS)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS) $(NAME)
 
 fclean: clean
 	rm -f $(NAME)
