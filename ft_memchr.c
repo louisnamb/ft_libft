@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lnambaji <lnambaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 18:22:03 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/24 15:43:16 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:53:30 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	size_t	j;
 
 	j = 0;
-	if (!s)
-		return (NULL);
 	while (j < n)
 	{
 		if (*(unsigned char *)(s + j) == (unsigned char)c)
@@ -32,13 +30,13 @@ void	*ft_memchr(const void *s, int c, size_t n)
 #include <stdio.h>
 int main () {
 
-	char *src = "/|\x12\xff\x09\0\x42\042\0\42|\\";
- 	int size = 12;
+	//char *src = NULL;
+ 	int size = 0x20;
 
- 	if (memchr(src, '\0', size) == ft_memchr(src, '\0', size))
-		printf("correct");
- 	else
-	 	printf("incorrect");
+ //	if (memchr(NULL, '\0', size) == ft_memchr(NULL, '\0', size))
+	printf("%s", ft_memchr(NULL, '\0', size));
+ 	//else
+	 //	printf("incorrect");
 	return(0);
 }
 */

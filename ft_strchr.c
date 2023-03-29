@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lnambaji <lnambaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:26:14 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/24 15:45:00 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:43:37 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,27 @@ char	*ft_strchr(const char *s, int c)
 	const char	*str;
 
 	str = s;
-	if (str)
+	while (*str && str)
 	{
-		while (*str != '\0')
-		{
-			if (*str == (char)c)
-				return ((char *)str);
-			str++;
-		}
-		if ((char)c == '\0')
+		if (*str == (char)c)
 			return ((char *)str);
+		str++;
 	}
+	if ((char)c == '\0')
+		return ((char *)str);
 	return (NULL);
 }
-/*#include <stdio.h>
+/*
 #include <string.h>
-
+#include <stdio.h>
 int main() {
-	char *str = "hello world";
-	int c = 'r';
-	printf("ft_strchr: %s strchr: %s\n", ft_strchr(str, c), strchr(str, c));	
+	char *str = NULL;
+	int c = '\0';
+	//if (ft_strchr(str, c) == strchr(str, c))
+//		printf("TRUE");
+//	else
+//		printf("FALSE");
+	printf("%s", ft_strchr(str, c));
 	return (0);
-}*/
+}
+*/

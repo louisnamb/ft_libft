@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lnambaji <lnambaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:26:01 by lnambaji          #+#    #+#             */
-/*   Updated: 2023/03/24 16:00:06 by lnambaji         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:50:22 by lnambaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,6 @@ void	freearr(char **strs, int j)
 		free(strs[j]);
 	}
 	free(strs);
-}
-
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	char	*substring;
-
-	if (!s)
-		return (0);
-	if (ft_strlen(s) < start)
-		return (ft_strdup(""));
-	if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-	substring = malloc(sizeof(char) * (len + 1));
-	if (!substring)
-		return (0);
-	ft_strlcpy(substring, s + start, len + 1);
-	return (substring);
 }
 
 char	**ft_split(char const *s, char c)

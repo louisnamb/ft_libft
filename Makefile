@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lnambaji <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lnambaji <lnambaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 11:46:06 by lnambaji          #+#    #+#              #
-#    Updated: 2023/03/14 12:42:16 by lnambaji         ###   ########.fr        #
+#    Updated: 2023/03/28 15:40:05 by lnambaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c
+		ft_toupper.c \
 
 BONUS =	ft_lstadd_back.c \
 		ft_lstadd_front.c \
@@ -60,6 +60,7 @@ BONUS =	ft_lstadd_back.c \
 		ft_lstsize.c \
 
 OBJS = $(SRC:.c=.o)
+
 BONUS_OBJS = $(BONUS:.c=.o)
 
 HDRS = libft.h
@@ -67,11 +68,11 @@ HDRS = libft.h
 all:$(NAME)
 
 $(NAME):
-	gcc -Wall -Werror -Wextra -I $(HDRS) -c $(SRC)
+	cc -Wall -Werror -Wextra -I $(HDRS) -c $(SRC)
 	ar -rcs $(NAME) $(OBJS)
 
 bonus: $(NAME)
-	gcc -Wall -Wextra -Werror -I $(HDRS) -c $(BONUS)
+	cc -Wall -Wextra -Werror -I $(HDRS) -c $(BONUS)
 	ar -rcs $(NAME) $(BONUS_OBJS)
 
 clean:
